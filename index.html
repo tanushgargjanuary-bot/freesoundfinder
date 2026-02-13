@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeSoundFinder</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #0f0f0f; 
+            color: #fff; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        .container { text-align: center; max-width: 600px; width: 100%; }
+        h1 { font-size: 2rem; margin-bottom: 2rem; }
+        input { 
+            width: 100%; 
+            padding: 1rem; 
+            font-size: 1.1rem; 
+            border: 2px solid #333; 
+            border-radius: 12px; 
+            background: #1a1a1a; 
+            color: #fff; 
+            margin-bottom: 1rem;
+        }
+        input:focus { outline: none; border-color: #4CAF50; }
+        button { 
+            width: 100%; 
+            padding: 1rem 2rem; 
+            font-size: 1.1rem; 
+            background: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            font-weight: 600;
+        }
+        button:hover { background: #45a049; }
+        .info { color: #888; margin-top: 1.5rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search 4 Free Asset Sites at Once</h1>
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Type music genre or sound effect..."
+            onkeypress="if(event.key === 'Enter') searchAll()"
+        >
+        <button onclick="searchAll()">Search All Sites</button>
+        <p class="info">Opens Pixabay, Mixkit, Freesound & YouTube Audio Library</p>
+    </div>
+
+    <script>
+        function searchAll() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) return alert('Please enter a search term');
+            
+            const encoded = encodeURIComponent(query);
+            window.open(`https://pixabay.com/music/search/${encoded}`, '_blank');
+            window.open(`https://mixkit.co/free-stock-music/${encoded}`, '_blank');
+            window.open(`https://freesound.org/search/?q=${encoded}`, '_blank');
+            window.open('https://studio.youtube.com/music', '_blank');
+        }
+    </script>
+</body>
+</html>
