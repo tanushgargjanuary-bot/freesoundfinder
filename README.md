@@ -45,3 +45,4 @@ Search multiple free music and sound effect sites simultaneously with a single c
 ## License
 
 MIT - Feel free to use and modify!
+<!-- CodeRabbit review trigger -->
